@@ -1,0 +1,23 @@
+{
+  "name": "agenda-eletronica",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/filipelimma/agenda-eletronica.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/filipelimma/agenda-eletronica/issues"
+  },
+  "homepage": "https://github.com/filipelimma/agenda-eletronica#readme",
+  "dependencies": {
+    "mongodb": "^6.20.0"
+  }
+}
