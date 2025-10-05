@@ -1,4 +1,5 @@
 const { connect } = require("./db");
+const Log = require("./log");
 
 class Evento {
   constructor(titulo, data, descricao, usuarioEmail) {
@@ -19,7 +20,7 @@ class Evento {
       });
       client.close();
     } catch (error) {
-      console.error("Erro ao inserir evento:", error);
+      Log.registrar("Erro ao inserir evento: " + error.message);
     }
   }
 
@@ -30,7 +31,8 @@ class Evento {
       client.close();
       return evento;
     } catch (error) {
-      console.error("Erro ao buscar evento:", error);
+      Log.registrar("Erro ao buscar evento: " + error.message);
+      return null;
     }
   }
 
@@ -43,7 +45,7 @@ class Evento {
       );
       client.close();
     } catch (error) {
-      console.error("Erro ao atualizar evento:", error);
+      Log.registrar("Erro ao atualizar evento: " + error.message);
     }
   }
 
@@ -53,7 +55,7 @@ class Evento {
       await db.collection("eventos").deleteOne({ titulo });
       client.close();
     } catch (error) {
-      console.error("Erro ao deletar evento:", error);
+      Log.registrar("Erro ao deletar evento: " + error.message);
     }
   }
 }

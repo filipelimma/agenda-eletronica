@@ -1,4 +1,5 @@
 const { connect } = require("./db");
+const Log = require("./log");
 
 class Contato {
   constructor(nome, telefone, email) {
@@ -17,7 +18,7 @@ class Contato {
       });
       client.close();
     } catch (error) {
-      console.error("Erro ao inserir contato:", error);
+      Log.registrar("Erro ao inserir contato: " + error.message);
     }
   }
 
@@ -28,7 +29,8 @@ class Contato {
       client.close();
       return contato;
     } catch (error) {
-      console.error("Erro ao buscar contato:", error);
+      Log.registrar("Erro ao buscar contato: " + error.message);
+      return null;
     }
   }
 
@@ -41,7 +43,7 @@ class Contato {
       );
       client.close();
     } catch (error) {
-      console.error("Erro ao atualizar contato:", error);
+      Log.registrar("Erro ao atualizar contato: " + error.message);
     }
   }
 
@@ -51,7 +53,7 @@ class Contato {
       await db.collection("contatos").deleteOne({ nome });
       client.close();
     } catch (error) {
-      console.error("Erro ao deletar contato:", error);
+      Log.registrar("Erro ao deletar contato: " + error.message);
     }
   }
 }
